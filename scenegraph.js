@@ -1,9 +1,9 @@
-function Scene(scene_name)
+function Scene(scene_name,scene_class = "scene")
 {   
     this.div = document.createElement("div");
 
     this.div.id = scene_name;
-    this.div.className = "scene";
+    this.div.className = scene_class;
     document.body.appendChild(this.div);
 
 
@@ -22,12 +22,12 @@ function Scene(scene_name)
     }
 }
 
-function Layer(layer_name)
+function Layer(layer_name,layer_class = "layer")
 {
     this.div = document.createElement("div");
 
     this.div.id = layer_name;
-    this.div.className = "layer";
+    this.div.className = layer_class;
 
     this.addNode = function(node) {
         this.div.appendChild(node.div);
@@ -44,10 +44,10 @@ function Layer(layer_name)
     }
 }
 
-function Node(node_name)
+function Node(node_name,node_value,node_class="node")
 {
-    this.div = document.createElement("div");
+    this.div = document.createElement(node_value);
 
     this.div.id = node_name;
-    this.div.className = "node";
+    this.div.className = node_class;
 }

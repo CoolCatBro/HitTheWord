@@ -1,60 +1,65 @@
 function gameScene(scene_name="game",width=600,height=500)
 {
-    var layers = new Array();
+    this.layers = new Array();
     this.id = scene_name;
 
-    Canvas.call(this,scene_name,width,height);
-    
-    this.addLayer = function(layer)
-    {
-        layers.push(layer);
-    }
+    canvasNode.call(this,scene_name,width,height);
+}
 
-    this.deleteLayer = function(layer_name)
-    {
-        for(i=0;i<layers.length;i++)
-        {
-            if(layers[i].id == layer_name)
-            layers.splice(i,1);
-        }
-    }
+gameScene.prototype.addLayer = function(layer)
+{
+    this.layers.push(layer);
+}
 
-    this.render = function()
+gameScene.prototype.deleteLayer = function(layer_name)
+{
+    for(i=0;i<this.layers.length;i++)
     {
-        for(i=0;i<layers.length;i++)
-        {
-            layers[i].render(this.context);
-        }
+        if(this.layers[i].id == layer_name)
+        this.layers.splice(i,1);
     }
+}
+
+gameScene.prototype.render = function()
+{
+    for(i=0;i<this.layers.length;i++)
+    {
+        this.layers[i].render(this.context);
+    }
+}
+
+gameScene.prototype.clear = function()
+{
+    this.context.clearRect(0,0,this.div.width,this.div.height);
 }
 
 function gameLayer(layer_name="gameLayer")
 {
-    var nodes = new Array();
+    this.nodes = new Array();
     this.id = layer_name;
+}
 
-    this.addNode = function(node)
-    {
-        nodes.push(node);
-    }
+gameLayer.prototype.addNode = function(node)
+{
+    this.nodes.push(node);
+}
 
-    this.deleteNode = function(node_name)
+gameLayer.prototype.deleteNode = function(node_name)
+{
+    for(i=0;i<this.nodes.length;i++)
     {
-        for(i=0;i<nodes.length;i++)
+        if(this.nodes[i].id == node_name)
         {
-            if(nodes[i].id == node_name)
-            {
-                nodes.splice(i,1);
-            }
+            this.nodes.splice(i,1);
         }
     }
+}
 
-    this.render = function(context)
+gameLayer.prototype.render = function(context)
+{
+    for(i=0;i<this.nodes.length;i++)
     {
-        for(i=0;i<nodes.length;i++)
-        {
-            nodes[i].render(context);
-        }
+        this.nodes[i].render(context);
     }
 }
 

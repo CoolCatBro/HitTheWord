@@ -6,18 +6,20 @@ function Scene(scene_name,scene_class = "scene")
     this.div.className = scene_class;
     document.body.appendChild(this.div);
 
+}
 
-    this.addLayer = function(layer){
-        this.div.appendChild(layer.div);
-    }
+Scene.prototype.addLayer = function(layer)
+{
+    this.div.appendChild(layer.div);
+}
 
-    this.deleteLayer = function(layer_name){
-        for(i=0; i<this.div.childNodes.length; i++)
+Scene.prototype.deleteLayer = function(layer_name)
+{
+    for(i=0; i<this.div.childNodes.length; i++)
+    {
+        if (this.div.childNodes[i].id == layer_name)
         {
-            if (this.div.childNodes[i].id == layer_name)
-            {
-                this.div.removeChild(this.div.childNodes[i]);
-            }
+            this.div.removeChild(this.div.childNodes[i]);
         }
     }
 }
@@ -28,18 +30,20 @@ function Layer(layer_name,layer_class = "layer")
 
     this.div.id = layer_name;
     this.div.className = layer_class;
+}
 
-    this.addNode = function(node) {
-        this.div.appendChild(node.div);
-    }
-    
-    this.deleteNode = function(node_name) {
-        for(i=0; i<this.div.childNodes.length; i++)
+Layer.prototype.addNode = function(node) 
+{
+    this.div.appendChild(node.div);
+}
+
+Layer.prototype.deleteNode = function(node_name) 
+{
+    for(i=0; i<this.div.childNodes.length; i++)
+    {
+        if (this.div.childNodes[i].id == node_name)
         {
-            if (this.div.childNodes[i].id == node_name)
-            {
-                this.div.removeChild(this.div.childNodes[i]);
-            }
+            this.div.removeChild(this.div.childNodes[i]);
         }
     }
 }

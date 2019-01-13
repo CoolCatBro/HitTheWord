@@ -1,4 +1,4 @@
-var Canvas = function(canvas_name,width,height)
+var canvasNode = function(canvas_name,width,height)
 {
     Node.call(this,canvas_name,"canvas","game");
     this.div.width = width;

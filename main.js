@@ -1,9 +1,19 @@
+// One time
 function play()
 {
     Scene1 = new Scene("scene1");
     game = new gameScene("game1");
+    letters = new Letters();
     Scene1.addLayer(game);
-    letter = new gameTextNode("A",10,50);
-    game.addLayer(letter);
+    game.addLayer(letters);
+    this.interval = setInterval(update,2);
+}
+
+// Run Every frame
+function update()
+{
+    game.clear();
+    letters.createLetter();
+    letters.update();
     game.render();
 }

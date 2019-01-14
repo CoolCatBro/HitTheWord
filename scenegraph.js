@@ -15,7 +15,7 @@ Scene.prototype.addLayer = function(layer)
 
 Scene.prototype.deleteLayer = function(layer_name)
 {
-    for(i=0; i<this.div.childNodes.length; i++)
+    for(var i=0;i<this.div.childNodes.length;i++)
     {
         if (this.div.childNodes[i].id == layer_name)
         {
@@ -39,7 +39,7 @@ Layer.prototype.addNode = function(node)
 
 Layer.prototype.deleteNode = function(node_name) 
 {
-    for(i=0; i<this.div.childNodes.length; i++)
+    for(var i=0;i<this.div.childNodes.length;i++)
     {
         if (this.div.childNodes[i].id == node_name)
         {

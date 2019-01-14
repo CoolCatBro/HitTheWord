@@ -6,21 +6,19 @@ function Letter()
     this.speed;
     
     gameNode.call(this,"char");
-}
 
-Letter.prototype.render = function(context)
-{
-    context.font = "30px Arial";
-    context.fillText(this.char,this.x,this.y);
+    this.render = function(context)
+    {
+        context.font = "30px Arial";
+        context.fillText(this.char,this.x,this.y);
+    }
 }
 
 function Letters()
 {
-    this.nletters = 0;
-
     this.createLetter = function()
     {
-        if (this.nletters < 8 )
+        if (this.nodes.length < 7 )
         {
         letter = new Letter();
         letter.char = String.fromCharCode(Math.round(getRandom(65,90)));
@@ -30,8 +28,13 @@ function Letters()
         letter.speed = getRandom(1,10);
         
         this.addNode(letter);
-        this.nletters++;
         }
+    }
+
+    this.control = function(key)
+    {
+        GameManager.addScore();
+        this.deleteNode(String.fromCharCode(key));
     }
 
     this.update = function()

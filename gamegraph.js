@@ -13,7 +13,7 @@ gameScene.prototype.addLayer = function(layer)
 
 gameScene.prototype.deleteLayer = function(layer_name)
 {
-    for(i=0;i<this.layers.length;i++)
+    for(i=this.layers.length-1;i>=0;i--)
     {
         if(this.layers[i].id == layer_name)
         this.layers.splice(i,1);
@@ -46,7 +46,7 @@ gameLayer.prototype.addNode = function(node)
 
 gameLayer.prototype.deleteNode = function(node_name)
 {
-    for(i=0;i<this.nodes.length;i++)
+    for(i=this.nodes.length-1;i>=0;i--)
     {
         if(this.nodes[i].id == node_name)
         {
